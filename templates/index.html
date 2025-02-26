@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Relatórios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gerador de Relatórios</h1>
+
+    {% if erro %}
+        <p style="color: red;">{{ erro }}</p>
+    {% endif %}
+
+    {% if download_link %}
+        <p><a href="{{ download_link }}" download>Clique aqui para baixar o relatório</a></p>
+    {% endif %}
+
+    <form method="POST">
+        <label for="diretorio">Diretório:</label>
+        <input type="text" id="diretorio" name="diretorio" required>
+        
+        <label for="ano_limite">Ano Limite:</label>
+        <input type="number" id="ano_limite" name="ano_limite" required>
+
+        <button type="submit">Gerar Relatório</button>
+    </form>
+
+</body>
+</html>
