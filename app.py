@@ -3,6 +3,10 @@ import pandas as pd
 from datetime import datetime
 from flask import Flask, render_template, request, send_file
 
+import os
+
+
+
 # Definir o diretório base do projeto
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
@@ -66,3 +70,8 @@ def download(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    PORT = int(os.getenv("PORT", 5000))  # Usa a porta do ambiente ou 5000 por padrão
+SECRET_KEY = os.getenv("SECRET_KEY", "chave-padrao")  # Usa uma chave secreta
+
+app.config["SECRET_KEY"] = SECRET_KEY
